@@ -118,3 +118,8 @@ for (const file of TSX_FILES) {
 test("only api-client.ts is exempt, not api-client.tsx", async () => {
   assert.ok(blocked(await rules("export const r = fetch('/x');\n", "web/src/lib/api-client.tsx")));
 });
+
+test("only the generated Prisma client is ignored, not the rest of api/src", async () => {
+  assert.equal(await eslint.isPathIgnored(`${root}api/src/generated/client.ts`), true);
+  assert.equal(await eslint.isPathIgnored(`${root}api/src/app.ts`), false);
+});

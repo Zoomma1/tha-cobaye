@@ -39,7 +39,7 @@ const webFetchSyntax = [
 
 export default tseslint.config(
   // Add e.g. { ignores: ["canary/**"] } here when the canary lot lands.
-  { ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**"] },
+  { ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**", "api/src/generated/**"] },
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
   {
