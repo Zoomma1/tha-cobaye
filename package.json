@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "test": "node --test \"scripts/*.test.mjs\" && npm run test --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
+    "canary": "node scripts/canary.mjs",
     "check-pins": "node scripts/check-pins.mjs",
     "db:reset": "npm run db:reset -w api"
   },

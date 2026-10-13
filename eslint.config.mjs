@@ -38,8 +38,8 @@ const webFetchSyntax = [
 ];
 
 export default tseslint.config(
-  // Add e.g. { ignores: ["canary/**"] } here when the canary lot lands.
-  { ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**", "api/src/generated/**"] },
+  // Only the numbered canary fixtures are faulty on purpose (scripts/canary.mjs lints them with ignores off); strays stay linted.
+  { ignores: ["**/dist/**", "**/node_modules/**", "**/coverage/**", "api/src/generated/**", "canary/[0-9][0-9]-*.ts"] },
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
   {
