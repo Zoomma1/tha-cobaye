@@ -1,9 +1,10 @@
 {
   "name": "@cobaye/api",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && (npm run build:types || true)",
     "typecheck": "tsc --noEmit",
     "db:reset": "tsx scripts/db-reset.ts",
     "pretest": "DATABASE_URL=file:./test.db npm run db:reset",
@@ -11,7 +12,8 @@
     "dev": "tsx watch src/server.ts",
     "prebuild": "prisma generate",
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "build:types": "tsc -p tsconfig.types.json"
   },
   "dependencies": {
     "@hono/node-server": "2.1.5",
@@ -25,5 +27,10 @@
     "prisma": "7.10.0",
     "tsx": "4.23.15",
     "vitest": "5.0.4"
+  },
+  "exports": {
+    "./app-type": {
+      "types": "./dist/types/app.d.ts"
+    }
   }
 }
