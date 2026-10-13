@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "test": "node --test \"scripts/*.test.mjs\" && npm run test --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
-    "check-pins": "node scripts/check-pins.mjs"
+    "check-pins": "node scripts/check-pins.mjs",
+    "db:reset": "npm run db:reset -w api"
   },
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "4.8.1",

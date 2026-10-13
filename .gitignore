@@ -9,3 +9,5 @@ coverage
 *.log
 .DS_Store
 *.tsbuildinfo
+api/src/generated
+.vitest
