@@ -59,6 +59,7 @@ export default tseslint.config(
     },
   },
   { files: ["**/*.mjs"], extends: [tseslint.configs.disableTypeChecked] },
+  { files: ["web/**"], languageOptions: { globals: { ...globals.browser } } },
   {
     files: ["web/src/**/*.{ts,tsx}"],
     rules: {
