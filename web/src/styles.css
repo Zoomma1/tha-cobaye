@@ -1,0 +1,12 @@
+body { font-family: system-ui, sans-serif; margin: 0; color: #1a1a1a; background: #fafafa; }
+nav { display: flex; gap: 1rem; padding: 1rem 2rem; background: #1a1a1a; }
+nav a { color: #ddd; text-decoration: none; }
+nav a.active { color: #fff; font-weight: 600; }
+main { max-width: 48rem; margin: 0 auto; padding: 1rem 2rem; }
+.headline { font-size: 1.2rem; color: #444; }
+.cards { list-style: none; padding: 0; }
+.cards li { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 0.5rem 1rem; margin-bottom: 1rem; }
+.dates { color: #666; margin: 0; }
+form { display: grid; gap: 0.75rem; margin-bottom: 2rem; }
+label { display: grid; gap: 0.25rem; }
+[role="alert"] { color: #b00020; }
