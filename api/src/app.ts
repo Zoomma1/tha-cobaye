@@ -17,6 +17,7 @@ const createExperienceSchema = z
   });
 
 export const app = new Hono()
+  .get("/api/health", (c) => c.json({ status: "ok" as const }, 200))
   .get("/api/profile", async (c) => {
     const profile = await db.profile.findFirst({ orderBy: { id: "asc" } });
     if (profile === null) return c.json({ error: "profile not found" }, 404);
