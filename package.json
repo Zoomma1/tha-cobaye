@@ -1,7 +1,7 @@
 {
   "name": "tha-cobaye",
   "private": true,
-  "description": "Site CV de la persona fictive du cobaye",
+  "description": "Site CV d'une persona fictive (cobaye)",
   "type": "module",
   "engines": { "node": ">=24" },
   "workspaces": ["web", "api"],
