@@ -60,6 +60,15 @@ export const app = new Hono()
   .get("/api/projects", async (c) => {
     const projects = await db.project.findMany({ orderBy: [{ position: "asc" }, { id: "asc" }] });
     return c.json(projects, 200);
+  })
+  .get("/api/cv", async (c) => {
+    const [profile, experiences, projects] = await Promise.all([
+      db.profile.findFirst({ orderBy: { id: "asc" } }),
+      db.experience.findMany({ orderBy: [{ startDate: "desc" }, { id: "asc" }] }),
+      db.project.findMany({ orderBy: [{ position: "asc" }, { id: "asc" }] }),
+    ]);
+    if (profile === null) return c.json({ error: "profile not found" }, 404);
+    return c.json({ profile, experiences, projects }, 200);
   });
 
 export type AppType = typeof app;
