@@ -16,6 +16,7 @@ export const profile: Profile = {
   bio: "A short bio.",
   email: "test@example.com",
   location: "Nowhere, Testland",
+  website: null,
 };
 
 export const experiences: Experience[] = [

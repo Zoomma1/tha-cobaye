@@ -16,6 +16,10 @@ const createExperienceSchema = z
     message: "endDate must not be before startDate",
   });
 
+const websiteSchema = z.object({
+  website: z.union([z.url({ protocol: /^https?$/ }), z.null()]),
+});
+
 export const app = new Hono()
   .get("/api/health", (c) => c.json({ status: "ok" as const }, 200))
   .get("/api/profile", async (c) => {
@@ -23,6 +27,19 @@ export const app = new Hono()
     if (profile === null) return c.json({ error: "profile not found" }, 404);
     return c.json(profile, 200);
   })
+  .patch(
+    "/api/profile/website",
+    zValidator("json", websiteSchema, (result, c) => {
+      if (!result.success) return c.json({ error: "invalid website" }, 400);
+    }),
+    async (c) => {
+      const { website } = c.req.valid("json");
+      const profile = await db.profile.findFirst({ orderBy: { id: "asc" } });
+      if (profile === null) return c.json({ error: "profile not found" }, 404);
+      const updated = await db.profile.update({ where: { id: profile.id }, data: { website } });
+      return c.json(updated, 200);
+    },
+  )
   .get("/api/experiences", async (c) => {
     const experiences = await db.experience.findMany({ orderBy: [{ startDate: "desc" }, { id: "asc" }] });
     return c.json(experiences, 200);
