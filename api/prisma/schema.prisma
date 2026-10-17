@@ -16,6 +16,7 @@ model Profile {
   bio      String
   email    String
   location String
+  website  String?
 }
 
 model Experience {
